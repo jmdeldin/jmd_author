@@ -9,15 +9,6 @@
  * @order           5
  */
 
-if (txpinterface === 'public')
-{
-    global $textarray;
-    $l10n = array(
-        'jmd_author_invalid_display' => 'Invalid display value',
-    );
-    $textarray = array_merge($textarray, $l10n);
-}
-
 /**
  * Provides access to an author's username and email address.
  * Replaces the spaces in an author's real name with any character.
@@ -35,6 +26,7 @@ function jmd_author($atts)
         'lowercase' => 0,
         'separator' => ' ',
     ), $atts));
+
     assert_article();
     $username = $thisarticle['authorid'];
     $name = get_author_name($username);
@@ -55,13 +47,11 @@ function jmd_author($atts)
             break;
 
         default:
-            trigger_error(gTxt('jmd_author_invalid_display'));
+            trigger_error('Invalid display value.');
     }
 
     if ($lowercase == 1)
-    {
         $out = strtolower($out);
-    }
 
     return str_replace(' ', $separator, $out);
 }
