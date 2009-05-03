@@ -10,6 +10,7 @@ h2(#attributes). @<txp:jmd_author/>@ attributes
 | @display@ | @email@, @name@, @username@ | @username@ | Outputs an available value |
 | @lowercase@ | @0@, @1@ | @0@ | Lowercases @display@ text |
 | @separator@ | @*@ | @' '@ | Replaces spaces in @display@ with any character |
+| @username@ | Valid username | Article author | Username to base output on |
 
 h2(#examples). Examples
 
@@ -21,4 +22,12 @@ h2(#examples). Examples
 ** @<txp:jmd_author display="email"/>@
 * Author profiles
 ** "TextBook article":http://textpattern.net/wiki/index.php?title=Author_profiles
+* "smd_gallery":http://stefdawson.com/sw/plugins/#smd_gallery: Display the image owner's real name
+
+bc. <txp:smd_gallery category="photos">
+    <a rel="lightbox-{category}" href="{url}" title="{caption} by
+        <txp:jmd_author username="{author}" display="name"/>">
+      <txp:thumbnail id="{id}"/>
+    </a>
+</txp:smd_gallery>
 
